@@ -18,6 +18,7 @@ use App\Http\Controllers\MapController;
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
+
 Route::get('/dashboard', [MapController::class, 'index'])->name('dashboard');
 Route::post('/dashboard', [MapController::class, 'store'])->name('map.store');
 Route::get('/dashboard/create', [MapController::class, 'create'])->name('map.create');
@@ -29,3 +30,8 @@ Route::delete('/dashboard/{map:id}/destroy', [MapController::class, 'destroy'])-
 Route::get('/place', [MapController::class, 'place'])->name('place');
 
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+
+// Test Halaman Baru
+Route::get('/test', function () {
+    return view('test');
+})->name('test');

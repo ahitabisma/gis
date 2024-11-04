@@ -110,6 +110,15 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('test') }}"
+                                class="nav-link {{ Request::is('test') ? 'active' : null }}">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>
+                                    Test
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
