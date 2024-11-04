@@ -15,6 +15,9 @@ use App\Http\Controllers\MapController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
 Route::get('/dashboard', [MapController::class, 'index'])->name('dashboard');
 Route::post('/dashboard', [MapController::class, 'store'])->name('map.store');
 Route::get('/dashboard/create', [MapController::class, 'create'])->name('map.create');
