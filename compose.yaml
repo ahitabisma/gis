@@ -1,0 +1,31 @@
+services:
+  gis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gis:latest
+    container_name: gis
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - mysql_network
+    restart: unless-stopped
+
+  gis_nginx:
+    image: nginx:alpine
+    container_name: gis_nginx
+    ports:
+      - "127.0.0.1:9004:80"
+    networks:
+      - mysql_network
+    volumes:
+      - ./:/var/www/html  
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf 
+    depends_on:
+      - gis
+    restart: always
+
+networks:
+  mysql_network:
+    external: true
